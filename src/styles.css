@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap");
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Paper / ink palette */
+  --paper: oklch(0.93 0.018 95);
+  --paper-deep: oklch(0.88 0.022 92);
+  --ink-sage: oklch(0.5 0.045 135); /* rgb(100,123,86) ≈ sage green */
+  --ink-sage-soft: oklch(0.62 0.04 135);
+  --ink-sage-deep: oklch(0.38 0.05 135);
+  --rose: oklch(0.88 0.045 20); /* rgb(249,214,213) */
+  --rose-deep: oklch(0.78 0.07 18);
+
+  --background: var(--paper);
+  --foreground: var(--ink-sage-deep);
+  --card: oklch(0.93 0.018 95 / 0.5);
+  --card-foreground: var(--ink-sage-deep);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink-sage-deep);
+  --primary: var(--ink-sage);
+  --primary-foreground: var(--paper);
+  --secondary: var(--rose);
+  --secondary-foreground: var(--ink-sage-deep);
+  --muted: oklch(0.9 0.02 95);
+  --muted-foreground: var(--ink-sage-soft);
+  --accent: var(--rose);
+  --accent-foreground: var(--ink-sage-deep);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: var(--paper);
+  --border: oklch(0.5 0.045 135 / 0.25);
+  --input: oklch(0.5 0.045 135 / 0.35);
+  --ring: var(--ink-sage);
+
+  --font-display: "Playfair Display", "Cormorant Garamond", serif;
+  --font-serif: "EB Garamond", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "EB Garamond", Georgia, serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--color-foreground);
+    font-family: var(--font-serif);
+    background-color: var(--paper);
+    background-image: url("/paper-bg.png");
+    background-repeat: repeat;
+    background-size: 720px auto;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink-sage);
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Editorial utilities */
+.title-display {
+  font-family: var(--font-display);
+  color: var(--ink-sage);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-shadow: 0 1px 0 oklch(1 0 0 / 0.3);
+}
+
+.ink-line {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--ink-sage) 20%,
+    var(--ink-sage) 80%,
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.invite-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ink-sage);
+  border-radius: 0;
+  font-family: var(--font-serif);
+  color: var(--ink-sage-deep);
+  padding: 0.5rem 0.25rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.invite-input::placeholder {
+  color: var(--ink-sage-soft);
+  opacity: 0.6;
+  font-style: italic;
+}
+.invite-input:focus {
+  border-color: var(--ink-sage-deep);
+}
+
+.invite-btn {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-sage);
+  background: transparent;
+  border: 1px solid var(--ink-sage);
+  padding: 0.65rem 1.75rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.invite-btn:hover {
+  background: var(--ink-sage);
+  color: var(--paper);
+}
