@@ -3,7 +3,6 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { Header } from "@/components/Header";
 import { Countdown } from "@/components/Countdown";
 import { Gifts } from "@/components/Gifts";
-import { RibbonsSVG } from "@/components/RibbonsSVG";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import bowImg from "@/assets/bow-clean.png";
@@ -50,7 +49,9 @@ function Section({
 }
 
 function Title({ children }: { children: React.ReactNode }) {
-  return <h2 className="title-display text-3xl md:text-5xl text-center">{children}</h2>;
+  return (
+    <h2 className="title-display text-3xl md:text-5xl text-center">{children}</h2>
+  );
 }
 
 function Invitation() {
@@ -98,7 +99,6 @@ function Invitation() {
     <>
       <Header />
       <Toaster />
-      <RibbonsSVG />
 
       <main className="relative z-10 w-full overflow-hidden">
         {/* HERO — single bow + names right below */}
@@ -131,21 +131,24 @@ function Invitation() {
           </div>
         </Section>
 
-        {/* BOAS VINDAS */}
-        <Section className="py-16 md:py-24 px-6">
-          <div className="max-w-xl mx-auto text-center">
-            <Title>Boas Vindas</Title>
-            <div className="ink-line my-8 mx-auto w-40" />
-            <p className="font-serif text-base md:text-lg leading-relaxed text-[var(--ink-sage-deep)] italic">
-              É com imensa alegria que convidamos você para celebrar conosco o início de uma nova
-              história. Que esse dia seja tão luminoso quanto o amor que nos une — e que sua
-              presença, querida e querido, faça parte da nossa memória mais doce.
-            </p>
-            <p className="mt-6 font-display tracking-[0.3em] text-xs uppercase text-[var(--ink-sage)]">
-              — com carinho, Luiza &amp; Henrique
-            </p>
-          </div>
-        </Section>
+         <Section className="py-16 md:py-24 px-6">
+           <div className="max-w-xl mx-auto text-center">
+             <Title>Boas Vindas</Title>
+             <div className="ink-line my-8 mx-auto w-40" />
+             <p className="mb-7 font-serif text-base md:text-lg leading-relaxed text-[var(--ink-sage-deep)] italic">
+               Querido familiares e amigos,
+             </p>
+             <p className="mb-7 font-serif text-base md:text-lg leading-relaxed text-[var(--ink-sage-deep)] italic">
+               Estamos muito felizes em compartilhar com vocês esse momento tão especial nas nossas vidas. Nesse site, vocês encontrarão informações importantes sobre o dia do nosso casamento. Tudo foi pensado com muito carinho para que juntos aproveitemos esse dia.
+             </p>
+             <p className="mb-7 font-serif text-base md:text-lg leading-relaxed text-[var(--ink-sage-deep)] italic">
+               Sua presença é muito importante para nós!
+             </p>
+             <p className="mt-6 font-display tracking-[0.3em] text-xs uppercase text-[var(--ink-sage)]">
+               — com amor, Luiza &amp; Henrique
+             </p>
+           </div>
+         </Section>
 
         {/* CONTAGEM + PROGRAMAÇÃO — reduced gap */}
         <Section className="py-8 md:py-10 px-6">
@@ -378,54 +381,14 @@ function Invitation() {
         </Section>
 
         {/* FOOTER — editorial, integrated */}
-        <footer className="relative py-16 md:py-24 px-6">
+        <footer className="relative py-20 md:py-28 px-6 border-t border-[var(--ink-sage)]/15">
           <div className="max-w-lg mx-auto text-center">
-            <div className="ink-line mx-auto w-24 mb-10" />
-
-            {/* Initials */}
-            <p className="font-display text-5xl md:text-7xl text-[var(--ink-sage)] italic leading-none">
-              L
-              <span className="not-italic font-light mx-1 text-3xl md:text-5xl opacity-50">
-                &amp;
-              </span>
-              H
+            <p className="font-display text-xl md:text-2xl tracking-[0.15em] text-[var(--ink-sage)]">
+              Henrique &amp; Luiza
             </p>
-
-            {/* Links */}
-            <nav className="flex items-center justify-center gap-6 mt-8 flex-wrap">
-              {[
-                { label: "RSVP", href: "#rsvp" },
-                { label: "Local", href: "#programacao" },
-                { label: "Mensagem", href: "#mensagem" },
-                { label: "Presentes", href: "#presentes" },
-              ].map((link, i) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="font-display tracking-[0.2em] text-[0.65rem] uppercase text-[var(--ink-sage-soft)] hover:text-[var(--ink-sage)] transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-
-            <div className="mt-10">
-              <p className="font-display text-lg md:text-xl tracking-[0.15em] text-[var(--ink-sage)]">
-                Henrique &amp; Luiza
-              </p>
-              <p className="font-serif italic text-sm text-[var(--ink-sage-soft)] mt-2">
-                03 · 07 · 2027
-              </p>
-            </div>
-
-            <img
-              src={bouquet}
-              alt=""
-              loading="lazy"
-              width={512}
-              height={512}
-              className="w-20 mix-blend-multiply mt-10 mx-auto opacity-60"
-            />
+            <p className="font-display tracking-[0.35em] text-xs text-[var(--ink-sage-soft)] mt-4">
+              03 &nbsp;.&nbsp; 07 &nbsp;.&nbsp; 2027
+            </p>
           </div>
         </footer>
       </main>

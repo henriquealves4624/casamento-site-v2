@@ -71,6 +71,14 @@
   --font-sans: "EB Garamond", Georgia, serif;
 }
 
+@font-face {
+  font-family: "Ivana Script";
+  src: url("/src/assets/fonts/IvanaScript-Regular.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -88,7 +96,7 @@
     background-repeat: repeat;
     background-size: 720px auto;
     background-attachment: fixed;
-    background-blend-mode: multiply;
+    /* background-blend-mode: multiply; */
     min-height: 100vh;
   }
 
